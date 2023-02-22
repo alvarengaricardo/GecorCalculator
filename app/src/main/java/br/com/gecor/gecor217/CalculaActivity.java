@@ -47,7 +47,6 @@ public class CalculaActivity extends AppCompatActivity {
     private int carencia;
     private int prazo;
     private float iof;
-    private float parcelas;
     private float impacto;
     private float pcld;
     private float saldototal;
@@ -78,11 +77,11 @@ public class CalculaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calcula);
 
         esddevedor = (EditText) findViewById(R.id.editSdDevedorId);
-        esddevedor.addTextChangedListener(new MascaraMonetaria(esddevedor)); // chama a classe para máscara
+       // esddevedor.addTextChangedListener(new MascaraMonetaria(esddevedor)); // chama a classe para máscara
         epec = (EditText) findViewById(R.id.editPecId);
         // epec.addTextChangedListener(new MascaraVirgula(epec)); // chama a classe para máscara
         eentrada = (EditText) findViewById(R.id.editEntradaId);
-        eentrada.addTextChangedListener(new MascaraMonetaria(eentrada)); // chama a classe para máscara
+        //eentrada.addTextChangedListener(new MascaraMonetaria(eentrada)); // chama a classe para máscara
         etaxa = (EditText) findViewById(R.id.editTaxaId);
         //  etaxa.addTextChangedListener(new MascaraVirgula(etaxa)); // chama a classe para máscara
         ecarencia = (EditText) findViewById(R.id.editCarenciaId);
@@ -230,7 +229,7 @@ public class CalculaActivity extends AppCompatActivity {
             expo = (float) Math.pow((j11 + 1), carencia);
 
             saldototal = ((j3 + iof) * (expo));               // calcula o saldo total da operação j5
-            parcelas = saldototal / parcelamento;
+            float parcelas = saldototal / parcelamento;
 
             //     aviso(String.valueOf("Valor do IOF: "+NumberFormat.getCurrencyInstance().format(iof))+" - Valor das Parcelas: "+
             //    NumberFormat.getCurrencyInstance().format(parcelas));
