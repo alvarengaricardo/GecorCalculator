@@ -5,8 +5,6 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -16,11 +14,13 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.text.NumberFormat;
 import java.util.Locale;
 
 public class CalculaActivity extends AppCompatActivity {
-
     private ListView listaRating;
     private String[] rating = {"AA", "A1", "A2",
             "B1", "B2", "B3", "B4",
@@ -29,7 +29,6 @@ public class CalculaActivity extends AppCompatActivity {
             "E1", "E2",
             "F1", "F2",
             "G1", "G2", "H"};
-
     private float[] ppcld = {0.0f, 0.5f, .75f,
             1.0f, 1.5f, 2.0f, 2.5f,
             3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f,
@@ -37,12 +36,10 @@ public class CalculaActivity extends AppCompatActivity {
             30.0f, 40.0f,
             50.0f, 60.0f,
             70.0f, 85.0f, 100.0f};
-
     private Button botao;
     private Button limpar;
     private Button voltar;
     private AlertDialog.Builder dialog;
-
     private float sddevedor;
     private float entrada;
     private float pec;
@@ -64,10 +61,7 @@ public class CalculaActivity extends AppCompatActivity {
     private float j11;
     private float parcelamento;
     private String string;
-
-
     Locale ptBr = new Locale("pt", "BR");
-
     private EditText esddevedor;
     private EditText eentrada;
     private EditText epec;
@@ -218,7 +212,7 @@ public class CalculaActivity extends AppCompatActivity {
             flag = false;
             aviso("Prazo não conforme. Revise os parâmetros informados.");
         }
-        if((pec < 0) || (pec > 100)){
+        if ((pec < 0) || (pec > 100)) {
             flag = false;
             aviso("Valor da PEC é inválido. Revise os parâmetros informados.");
         }
@@ -241,9 +235,9 @@ public class CalculaActivity extends AppCompatActivity {
             //     aviso(String.valueOf("Valor do IOF: "+NumberFormat.getCurrencyInstance().format(iof))+" - Valor das Parcelas: "+
             //    NumberFormat.getCurrencyInstance().format(parcelas));
 
-            if((iof < 0) || (parcelas < 0)){
+            if ((iof < 0) || (parcelas < 0)) {
                 aviso("Parametros incorretos. Reavalie os valores apresentados.");
-            }else{
+            } else {
 
                 if (impacto < 0) {
                     aviso(String.valueOf("Não é recomendável a contratação nestes parâmetros, impacto na PCLD em: " +
@@ -257,7 +251,7 @@ public class CalculaActivity extends AppCompatActivity {
         }
     }
 
-    private void aviso(String mensagem){
+    private void aviso(String mensagem) {
 
         // criar alert dialog
         dialog = new AlertDialog.Builder(CalculaActivity.this);
