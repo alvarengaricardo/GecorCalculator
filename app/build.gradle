@@ -7,8 +7,8 @@ android {
         applicationId "br.com.gecor.gecor217"
         minSdkVersion 22
         targetSdkVersion 33
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "2023.1"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     buildTypes {

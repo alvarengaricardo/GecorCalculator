@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Gecor217</string>
+    <string name="app_name">Calculadora Gecor</string>
+    <string name="status_bar">Calculadora GECOR</string>
 </resources>

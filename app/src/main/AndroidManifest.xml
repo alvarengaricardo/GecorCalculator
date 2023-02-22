@@ -5,7 +5,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo007"
-        android:label="Piloto Carteiras Inad"
+        android:label="@string/status_bar"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
