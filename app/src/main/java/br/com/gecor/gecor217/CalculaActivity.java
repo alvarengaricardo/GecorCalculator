@@ -77,7 +77,7 @@ public class CalculaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calcula);
 
         esddevedor = (EditText) findViewById(R.id.editSdDevedorId);
-       // esddevedor.addTextChangedListener(new MascaraMonetaria(esddevedor)); // chama a classe para máscara
+        // esddevedor.addTextChangedListener(new MascaraMonetaria(esddevedor)); // chama a classe para máscara
         epec = (EditText) findViewById(R.id.editPecId);
         // epec.addTextChangedListener(new MascaraVirgula(epec)); // chama a classe para máscara
         eentrada = (EditText) findViewById(R.id.editEntradaId);
@@ -88,7 +88,6 @@ public class CalculaActivity extends AppCompatActivity {
         eprazo = (EditText) findViewById(R.id.editPrazoId);
         respostaIof = (TextView) findViewById(R.id.iofId);
         respostaParcela = (TextView) findViewById(R.id.parcelaId);
-
         listaRating = (ListView) findViewById(R.id.listaRatingId);
 
         ArrayAdapter<String> adaptador = new ArrayAdapter<String>(
@@ -111,10 +110,8 @@ public class CalculaActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 codigoposicao = position;
-
             }
         });
-
 
         limpar = (Button) findViewById(R.id.btnLimparId);
         limpar.setOnClickListener(new View.OnClickListener() {
@@ -128,7 +125,6 @@ public class CalculaActivity extends AppCompatActivity {
                 eprazo.setText(String.valueOf(""));
                 respostaIof.setText(String.valueOf(""));
                 respostaParcela.setText(String.valueOf(""));
-
             }
         });
 
@@ -168,28 +164,19 @@ public class CalculaActivity extends AppCompatActivity {
                 if (flag == false) {
                     aviso("Todos os campos são de preenchimento obrigatório!");
                     // flag = true;
-
                 } else {
-
                     string = esddevedor.getText().toString();
                     string = string.replaceAll("[R$]", "").replaceAll("[.]", "").replaceAll("[,]", ".");
                     sddevedor = Float.parseFloat(string);
-
                     pec = Float.parseFloat(epec.getText().toString());
-
                     string = eentrada.getText().toString();
                     string = string.replaceAll("[R$]", "").replaceAll("[.]", "").replaceAll("[,]", ".");
                     entrada = Float.parseFloat(string);
-
                     taxa = Float.parseFloat(etaxa.getText().toString());
-
                     carencia = Integer.parseInt(ecarencia.getText().toString());
-
                     prazo = Integer.parseInt(eprazo.getText().toString());
-
                     calcular(sddevedor, pec, entrada, taxa, carencia, prazo, codigoposicao);
                     // aviso("Pronto para calcular!");
-
                 }
             }
         });
@@ -216,28 +203,20 @@ public class CalculaActivity extends AppCompatActivity {
             aviso("Valor da PEC é inválido. Revise os parâmetros informados.");
         }
 
-
         if (flag) {
-
             j3 = (sddevedor - entrada) - (sddevedor * (((pec / 100)))); // coluna j3 da planilha
             iof = (float) (((j3 * 0.0041 / 100) * (365)));  // calculo do iof
-
             j11 = (taxa / 100);
             expo = (float) Math.pow((1 + j11), prazo);
             parcelamento = (expo - 1) / (expo * j11);    // calcula o valor do parcelamento j4
-
             expo = (float) Math.pow((j11 + 1), carencia);
-
             saldototal = ((j3 + iof) * (expo));               // calcula o saldo total da operação j5
             float parcelas = saldototal / parcelamento;
-
             //     aviso(String.valueOf("Valor do IOF: "+NumberFormat.getCurrencyInstance().format(iof))+" - Valor das Parcelas: "+
             //    NumberFormat.getCurrencyInstance().format(parcelas));
-
             if ((iof < 0) || (parcelas < 0)) {
                 aviso("Parametros incorretos. Reavalie os valores apresentados.");
             } else {
-
                 if (impacto < 0) {
                     aviso(String.valueOf("Não é recomendável a contratação nestes parâmetros, impacto na PCLD em: " +
                             NumberFormat.getCurrencyInstance().format(impacto)) + ". Reavalie os valores apresentados.");
@@ -245,24 +224,18 @@ public class CalculaActivity extends AppCompatActivity {
                 respostaIof.setText(String.valueOf("Valor do IOF: " + NumberFormat.getCurrencyInstance().format(iof)));
                 respostaParcela.setText(String.valueOf("Valor da Parcela: " + NumberFormat.getCurrencyInstance().format(parcelas)));
             }
-
-
         }
     }
 
     private void aviso(String mensagem) {
-
         // criar alert dialog
         dialog = new AlertDialog.Builder(CalculaActivity.this);
-
         //configurar o titulo
         dialog.setTitle("ATENÇAO!");
-
         //configurar a mensagem
         dialog.setMessage(mensagem);
         dialog.setCancelable(false);
         dialog.setIcon(android.R.drawable.ic_dialog_alert); // seleciona icones nativos do android
-
         // botao negativo
         dialog.setNegativeButton("OK",
                 new DialogInterface.OnClickListener() {
@@ -273,6 +246,5 @@ public class CalculaActivity extends AppCompatActivity {
                 });
         dialog.create();
         dialog.show();
-
     }
 }

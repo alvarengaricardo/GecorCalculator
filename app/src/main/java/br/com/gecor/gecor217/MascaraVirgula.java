@@ -12,6 +12,7 @@ import java.text.NumberFormat;
 
 public class MascaraVirgula implements TextWatcher {
     final EditText campo;
+
     public MascaraVirgula(EditText campo) {
         super();
         this.campo = campo;
@@ -29,7 +30,6 @@ public class MascaraVirgula implements TextWatcher {
             isUpdating = false;
             return;
         }
-
         isUpdating = true;
         String str = s.toString();
         // Verifica se já existe a máscara no texto.
@@ -39,7 +39,6 @@ public class MascaraVirgula implements TextWatcher {
             // Retiramos a máscara.
             str = str.replaceAll("[,]", "").replaceAll("[.]", " ");
         }
-
         try {
             // Transformamos o número que está escrito no EditText em
             // decimal.
@@ -51,9 +50,8 @@ public class MascaraVirgula implements TextWatcher {
         }
     }
 
-
     @Override
-    public void beforeTextChanged(CharSequence s, int start, int count,int after) {
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
         // Não utilizado
     }
 
@@ -61,5 +59,4 @@ public class MascaraVirgula implements TextWatcher {
     public void afterTextChanged(Editable s) {
         // Não utilizado
     }
-
 }

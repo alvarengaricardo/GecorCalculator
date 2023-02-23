@@ -12,6 +12,7 @@ import java.text.NumberFormat;
 
 public class MascaraMonetaria implements TextWatcher {
     final EditText campo;
+
     public MascaraMonetaria(EditText campo) {
         super();
         this.campo = campo;
@@ -53,9 +54,8 @@ public class MascaraMonetaria implements TextWatcher {
         }
     }
 
-
     @Override
-    public void beforeTextChanged(CharSequence s, int start, int count,int after) {
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
         // Não utilizado
     }
 
@@ -63,5 +63,4 @@ public class MascaraMonetaria implements TextWatcher {
     public void afterTextChanged(Editable s) {
         // Não utilizado
     }
-
 }
