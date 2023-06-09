@@ -69,6 +69,7 @@ public class CalculaActivity extends AppCompatActivity {
     private EditText eprazo;
     private TextView respostaIof;
     private TextView respostaParcela;
+    private TextView respostaImpacto;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -88,6 +89,7 @@ public class CalculaActivity extends AppCompatActivity {
         eprazo = (EditText) findViewById(R.id.editPrazoId);
         respostaIof = (TextView) findViewById(R.id.iofId);
         respostaParcela = (TextView) findViewById(R.id.parcelaId);
+        respostaImpacto = (TextView) findViewById(R.id.impactoId);
         listaRating = (ListView) findViewById(R.id.listaRatingId);
 
         ArrayAdapter<String> adaptador = new ArrayAdapter<String>(
@@ -125,6 +127,7 @@ public class CalculaActivity extends AppCompatActivity {
                 eprazo.setText(String.valueOf(""));
                 respostaIof.setText(String.valueOf(""));
                 respostaParcela.setText(String.valueOf(""));
+                respostaImpacto.setText(String.valueOf(""));
             }
         });
 
@@ -223,6 +226,7 @@ public class CalculaActivity extends AppCompatActivity {
                 }
                 respostaIof.setText(String.valueOf("Valor do IOF: " + NumberFormat.getCurrencyInstance().format(iof)));
                 respostaParcela.setText(String.valueOf("Valor da Parcela: " + NumberFormat.getCurrencyInstance().format(parcelas)));
+                respostaImpacto.setText(String.valueOf("Impacto: " + NumberFormat.getCurrencyInstance().format(impacto)));
             }
         }
     }
